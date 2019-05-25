@@ -1,9 +1,12 @@
-package com.katariasoft.technologies.datastructures.Array.missingNumbers;
+package com.katariasoft.technologies.datastructures.Array.missingRepeating;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.Arrays;
 
+
+/**
+ */
 public class MissingNumberFinder {
 
 	public static int find(int[] arr) {

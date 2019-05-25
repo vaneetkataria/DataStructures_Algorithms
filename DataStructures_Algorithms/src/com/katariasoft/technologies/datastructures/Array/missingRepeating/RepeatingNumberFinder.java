@@ -1,4 +1,4 @@
-package com.katariasoft.technologies.datastructures.Array.missingNumbers;
+package com.katariasoft.technologies.datastructures.Array.missingRepeating;
 
 import java.util.ArrayList;
 import java.util.List;
