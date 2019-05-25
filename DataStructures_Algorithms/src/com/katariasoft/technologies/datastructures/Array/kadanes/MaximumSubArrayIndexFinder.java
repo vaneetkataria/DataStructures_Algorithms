@@ -1,4 +1,4 @@
-package com.katariasoft.technologies.datastructures.Array;
+package com.katariasoft.technologies.datastructures.Array.kadanes;
 
 import static com.katariasoft.technologies.datastructures.helper.CommonHelper.*;
 
