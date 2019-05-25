@@ -3,8 +3,6 @@ package com.katariasoft.technologies.datastructures.Array.triplets;
 import java.util.Arrays;
 import java.util.Scanner;
 
-import static com.katariasoft.technologies.datastructures.helper.CommonHelper.print;
-
 /*
  * This class can find triplet iff numbers are positive .
  * 

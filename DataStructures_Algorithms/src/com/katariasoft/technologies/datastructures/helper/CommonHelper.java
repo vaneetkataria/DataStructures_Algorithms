@@ -11,7 +11,7 @@ public class CommonHelper {
 
 	public static <T> void printArray(T[] t) {
 		Objects.requireNonNull(t);
-		Arrays.stream(t).forEach(System.out::print);
+		Arrays.stream(t).forEach(e -> System.out.print(e + " "));
 		System.out.println();
 	}
 }
