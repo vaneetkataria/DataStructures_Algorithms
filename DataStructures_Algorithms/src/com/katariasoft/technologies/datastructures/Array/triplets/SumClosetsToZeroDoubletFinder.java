@@ -14,33 +14,30 @@ public class SumClosetsToZeroDoubletFinder {
 		// sort Array First.
 		Arrays.sort(arr);
 		int minSum = Integer.MAX_VALUE;
-		int cIndex = arr.length - 1;
+
 		int minA = -1;
 		int minB = -1;
-		while (cIndex >= 1) {
-			int aIndex = 0;
-			int bIndex = cIndex;
-			while (true) {
-				if (aIndex >= bIndex)
-					break;
-				int sum = arr[aIndex] + arr[bIndex];
-				if (sum == 0)
-					return 0;
-				int absSum = Math.abs(sum);
-				if (absSum < minSum) {
-					minSum = absSum;
-					minA = aIndex;
-					minB = bIndex;
-				}
 
-				minSum = Math.min(minSum, absSum);
-				if (sum > 0)
-					bIndex--;
-				else
-					aIndex++;
+		int aIndex = 0;
+		int bIndex = arr.length - 1;
+		while (true) {
+			if (aIndex >= bIndex)
+				break;
+			int sum = arr[aIndex] + arr[bIndex];
+			if (sum == 0)
+				return 0;
+			int absSum = Math.abs(sum);
+			if (absSum < minSum) {
+				minSum = absSum;
+				minA = aIndex;
+				minB = bIndex;
 			}
-			cIndex--;
+			if (sum > 0)
+				bIndex--;
+			else
+				aIndex++;
 		}
+
 		return arr[minA] + arr[minB];
 
 	}
