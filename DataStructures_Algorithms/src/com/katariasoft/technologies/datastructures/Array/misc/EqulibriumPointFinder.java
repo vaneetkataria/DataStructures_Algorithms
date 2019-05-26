@@ -1,4 +1,4 @@
-package com.katariasoft.technologies.datastructures.Array;
+package com.katariasoft.technologies.datastructures.Array.misc;
 
 import java.util.stream.IntStream;
 
@@ -10,8 +10,7 @@ public class EqulibriumPointFinder {
 	public int pivotIndex(int[] nums) {
 		int totalSum = IntStream.of(nums).sum();
 		int leftSum = 0;
-		int length = nums.length - 1;
-		for (int i = 0; i <= length; i++) {
+		for (int i = 0; i <= nums.length - 1; i++) {
 			if (leftSum == totalSum - leftSum - nums[i])
 				return i;
 			leftSum += nums[i];
