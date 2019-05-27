@@ -1,4 +1,4 @@
-package com.katariasoft.technologies.datastructures.Array.misc;
+package com.katariasoft.technologies.datastructures.Array.reallife;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
