@@ -23,6 +23,9 @@ public class MinRqrdPlatformsCalculator {
 			} else if (arrivals[aLow] > departures[dLow]) {
 				numPlatforms--;
 				dLow++;
+			} else {
+				aLow++;
+				dLow++;
 			}
 
 		}
