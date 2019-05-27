@@ -7,19 +7,19 @@ import java.util.stream.Collectors;
 
 //https://www.hackerrank.com/contests/hw1/challenges/heap-sort/submissions/code/1314405812
 
-public class MinHeap extends Heap {
+public class MaxHeap extends Heap {
 
-	public static MinHeap of(int... arr) {
-		return new MinHeap(arr);
+	public static MaxHeap of(int... arr) {
+		return new MaxHeap(arr);
 	}
 
-	private MinHeap(int[] arr) {
+	private MaxHeap(int[] arr) {
 		super(arr);
 	}
 
 	@Override
 	public boolean shouldSwap(int[] arr, int parent, int child) {
-		return arr[parent] > arr[child];
+		return arr[parent] < arr[child];
 	}
 
 	public static void main(String args[]) {
@@ -31,7 +31,7 @@ public class MinHeap extends Heap {
 			int[] arr = new int[arraySize];
 			for (int i = 0; i <= arraySize - 1; i++)
 				arr[i] = Integer.parseInt(br.readLine());
-			int[] sortedArr = MinHeap.of(arr).extractAll();
+			int[] sortedArr = MaxHeap.of(arr).extractAll();
 			String output = Arrays.stream(sortedArr).boxed().map(String::valueOf).collect(Collectors.joining(","));
 			System.out.println("[" + output + "]");
 
