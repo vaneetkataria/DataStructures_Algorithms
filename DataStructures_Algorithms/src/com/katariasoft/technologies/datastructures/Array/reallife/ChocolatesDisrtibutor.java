@@ -31,20 +31,13 @@ public class ChocolatesDisrtibutor {
 	public static void main(String[] args) {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		try {
-			int numTestCases = Integer.parseInt(br.readLine());
-			while (numTestCases > 0) {
-				int arraySize = Integer.parseInt(br.readLine());
-
-				int[] arrivalArr = new int[arraySize];
-				String[] arrivals = br.readLine().split(" ");
-				for (int i = 0; i <= arrivals.length - 1; i++)
-					arrivalArr[i] = Integer.parseInt(arrivals[i]);
-
-				int numStudents = Integer.parseInt(br.readLine());
-
-				System.out.println(distrubute(arrivalArr, numStudents) + "\n");
-				numTestCases--;
-			}
+			int arraySize = Integer.parseInt(br.readLine());
+			int[] arrivalArr = new int[arraySize];
+			String[] arrivals = br.readLine().split(" ");
+			for (int i = 0; i <= arrivals.length - 1; i++)
+				arrivalArr[i] = Integer.parseInt(arrivals[i]);
+			int numStudents = Integer.parseInt(br.readLine());
+			System.out.println(distrubute(arrivalArr, numStudents) + "\n");
 		} catch (Exception e) {
 		}
 	}
