@@ -6,6 +6,8 @@ import java.util.Arrays;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
+//https://www.hackerrank.com/contests/hw1/challenges/heap-sort/submissions/code/1314405812
+
 public class MinHeap {
 
 	private int size = 0;
@@ -28,24 +30,18 @@ public class MinHeap {
 	}
 
 	private void place(int i) {
-		if (size == 0) {
-			data[0] = i;
-			size++;
-			return;
-		}
-
 		data[size] = i;
 		size++;
 		heapifyUp(i);
 	}
 
 	private void heapifyUp(int i) {
-		int currentIndex = size - 1;
-		while (currentIndex > 0) {
-			int parentIndex = (currentIndex - 1) / 2;
-			if (data[parentIndex] > data[currentIndex]) {
-				swap(data, parentIndex, currentIndex);
-				currentIndex = parentIndex;
+		int current = size - 1;
+		while (current > 0) {
+			int parent = (current - 1) / 2;
+			if (data[parent] > data[current]) {
+				swap(data, parent, current);
+				current = parent;
 			} else
 				break;
 		}
@@ -62,46 +58,48 @@ public class MinHeap {
 		if (size == 0)
 			throw new RuntimeException("Empty Heap.");
 		int Value = data[0];
-		data[0] = 0;
 		swap(data, 0, size - 1);
+		data[size - 1] = 0;
 		size--;
-		if (size == 0)
-			return Value;
 		heapifyDown();
 		return Value;
 	}
 
 	private void heapifyDown() {
-		int currentIndex = 0;
-		while (true) {
-			int leftChildIndex = 2 * currentIndex + 1;
-			int rightChildIndex = 2 * currentIndex + 2;
-			int comparisonIndex = 0;
+		if (size == 0)
+			return;
 
-			if (leftChildIndex <= size - 1 && rightChildIndex <= size - 1) {
-				comparisonIndex = data[leftChildIndex] <= data[rightChildIndex] ? leftChildIndex : rightChildIndex;
-			} else if (leftChildIndex <= size - 1)
-				comparisonIndex = leftChildIndex;
+		int current = 0;
+
+		while (true) {
+			int left = 2 * current + 1;
+			int right = 2 * current + 2;
+			int comparing = 0;
+
+			if (left <= size - 1 && right <= size - 1) {
+				comparing = data[left] <= data[right] ? left : right;
+			} else if (left <= size - 1)
+				comparing = left;
 			else
 				break;
 
-			if (data[currentIndex] > data[comparisonIndex])
-				swap(data, currentIndex, comparisonIndex);
+			if (data[current] > data[comparing])
+				swap(data, current, comparing);
 
-			currentIndex = comparisonIndex;
+			current = comparing;
 		}
 	}
 
 	public int[] extractAll() {
 		if (size == 0)
 			throw new RuntimeException("Nothing to output.");
-		int[] outputData = new int[size];
+		int[] output = new int[size];
 		int i = 0;
 		while (size != 0) {
-			outputData[i] = extract();
+			output[i] = extract();
 			i++;
 		}
-		return outputData;
+		return output;
 	}
 
 	public static void main(String args[]) {
@@ -111,9 +109,8 @@ public class MinHeap {
 		try {
 			int arraySize = Integer.parseInt(br.readLine());
 			int[] arr = new int[arraySize];
-			String[] strArray = br.readLine().split(" ");
-			for (int i = 0; i <= strArray.length - 1; i++)
-				arr[i] = Integer.parseInt(strArray[i]);
+			for (int i = 0; i <= arraySize - 1; i++)
+				arr[i] = Integer.parseInt(br.readLine());
 			int[] sortedArr = MinHeap.of(arr).extractAll();
 			String output = Arrays.stream(sortedArr).boxed().map(String::valueOf).collect(Collectors.joining(","));
 			System.out.println("[" + output + "]");
