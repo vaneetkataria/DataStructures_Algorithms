@@ -67,7 +67,7 @@ public abstract class Heap {
 			int comparing = 0;
 
 			if (hasLeft(current) && hasRight(current)) {
-				comparing = data[left] <= data[right] ? left : right;
+				comparing = chooseSwappable(data, left, right);
 			} else if (hasLeft(current))
 				comparing = left;
 			else
@@ -113,5 +113,7 @@ public abstract class Heap {
 	}
 
 	public abstract boolean shouldSwap(int[] arr, int parent, int child);
+
+	public abstract int chooseSwappable(int[] arr, int left, int right);
 
 }

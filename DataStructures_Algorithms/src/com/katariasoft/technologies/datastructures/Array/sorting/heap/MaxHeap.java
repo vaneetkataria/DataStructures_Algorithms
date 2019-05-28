@@ -13,13 +13,17 @@ public class MaxHeap extends Heap {
 		return new MaxHeap(arr);
 	}
 
-	private MaxHeap(int[] arr) {
+	protected MaxHeap(int[] arr) {
 		super(arr);
 	}
 
 	@Override
 	public boolean shouldSwap(int[] arr, int parent, int child) {
 		return arr[parent] < arr[child];
+	}
+
+	public int chooseSwappable(int[] arr, int left, int right) {
+		return arr[left] >= arr[right] ? left : right;
 	}
 
 	public static void main(String args[]) {
