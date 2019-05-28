@@ -28,7 +28,7 @@ public abstract class Heap {
 	private void heapifyUp(int i) {
 		int current = size - 1;
 		while (current > 0) {
-			int parent = (current - 1) / 2;
+			int parent = getParent(current);
 			if (shouldSwap(data, parent, current)) {
 				swap(data, parent, current);
 				current = parent;
@@ -62,13 +62,13 @@ public abstract class Heap {
 		int current = 0;
 
 		while (true) {
-			int left = 2 * current + 1;
-			int right = 2 * current + 2;
+			int left = getLeft(current);
+			int right = getRight(current);
 			int comparing = 0;
 
-			if (left <= size - 1 && right <= size - 1) {
+			if (hasLeft(current) && hasRight(current)) {
 				comparing = data[left] <= data[right] ? left : right;
-			} else if (left <= size - 1)
+			} else if (hasLeft(current))
 				comparing = left;
 			else
 				break;
@@ -78,6 +78,26 @@ public abstract class Heap {
 
 			current = comparing;
 		}
+	}
+
+	private int getParent(int child) {
+		return (child - 1) / 2;
+	}
+
+	private int getLeft(int parent) {
+		return 2 * parent + 1;
+	}
+
+	private int getRight(int parent) {
+		return 2 * parent + 2;
+	}
+
+	private boolean hasLeft(int parent) {
+		return getLeft(parent) <= size - 1;
+	}
+
+	private boolean hasRight(int parent) {
+		return getRight(parent) <= size - 1;
 	}
 
 	public int[] extractAll() {
